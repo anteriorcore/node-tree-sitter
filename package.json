@@ -2,7 +2,7 @@
   "name": "@anterior/tree-sitter",
   "version": "0.25.1",
   "description": "Node.js bindings to the Tree-sitter parsing library",
-  "repository": "http://github.com/tree-sitter/node-tree-sitter",
+  "repository": "git+https://github.com/anteriorcore/node-tree-sitter",
   "publishConfig": {
     "access": "public"
   },
