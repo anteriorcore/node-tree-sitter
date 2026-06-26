@@ -45,23 +45,4 @@ jobs:
 
       - name: Publish to NPM
         # FIXME: actions/setup-node#1440
-        run: NODE_AUTH_TOKEN= npm publish --verbose
-
-      - name: Prepare release artifacts
-        run: |
-          mkdir -p dist
-          for dir in prebuilds/*/; do
-            platform=$(basename "$dir")
-            cp "$dir/tree-sitter.node" "dist/tree-sitter-$platform.node"
-          done
-          ls -l dist
-
-      - name: Generate attestations
-        uses: actions/attest-build-provenance@v3
-        with:
-          subject-path: dist/*
-
-      - name: Create release
-        run: gh release create "$GITHUB_REF_NAME" --generate-notes dist/*
-        env:
-          GH_TOKEN: ${{github.token}}
+        run: NODE_AUTH_TOKEN= npm publish --verbose --access public --provenance
